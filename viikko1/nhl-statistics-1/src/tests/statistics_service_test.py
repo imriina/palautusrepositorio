@@ -21,5 +21,18 @@ class TestStatisticsService(unittest.TestCase):
 
     # ...
 
-    def test_jotain(self):
-        pass
+    def test_pelaajan_palautus(self):
+        player = self.stats.search("Semenko")
+        self.assertEqual(player.name, "Semenko")
+
+    def test_ei_palauta_pelaajaa(self):
+        player = self.stats.search("NonExistent")
+        self.assertEqual(player is None, True)
+
+    def test_team(self):
+        tiimi = self.stats.team("EDM")
+        self.assertTrue(all(player.team == "EDM" for player in tiimi))
+
+    def test_top(self):
+        paras = self.stats.top(1)
+        self.assertEqual(paras[0].name, "Gretzky")
