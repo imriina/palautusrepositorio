@@ -48,6 +48,30 @@ Register With Username That Is Already In Use
     Submit Credentials
     Register Should Fail With Message  User with username kalle already exists
 
+Login After Successful Registration
+    Set Username  santtu
+    Set Password  santtu123
+    Set Password Confirmation  santtu123
+    Submit Credentials
+    Register Should Succeed
+    Click Link  Continue to main page
+    Click Button  Logout
+    Set Username  santtu
+    Set Password  santtu123
+    Click Button  Login
+
+Login After Failed Registration
+    Set Username  santtui
+    Set Password  santtui124
+    Set Password Confirmation  santtui123
+    Submit Credentials
+    Register Should Fail With Message  Passwords don't match
+    Click Link  Login
+    Set Username  santtui
+    Set Password  santtu124
+    Click Button  Login
+    Page Should Contain  Invalid username or password
+
 *** Keywords ***
 
 Register Should Fail With Message
@@ -77,9 +101,4 @@ Set Password
 Set Password Confirmation
     [Arguments]  ${password}
     Input Password  password_confirmation  ${password}
-
-Login With Correct Credentials
-    Set Username  santtu
-    Set Password  santtu123
-    Click Button  Login
 
