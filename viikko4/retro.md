@@ -6,3 +6,4 @@ Glad, Sad, Mad on retrospektiivityökalu tapahtumat ja havainnot luokitellaan ti
 
 muutos 1
 muutos 2
+muutos 3
